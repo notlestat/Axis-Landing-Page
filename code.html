@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AXIS STUDIO | The Definitive Web &amp; Automation Partner</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Inter:wght@100..900&amp;family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#e5e5e5",
+                        "secondary": "#999ea9",
+                        "on-secondary-fixed": "#3a4049",
+                        "on-tertiary": "#57606e",
+                        "inverse-surface": "#f9f9f9",
+                        "background": "#000000",
+                        "on-primary": "#3f4041",
+                        "tertiary": "#f8f9ff",
+                        "primary-dim": "#b8b9b9",
+                        "secondary-container": "#363c45",
+                        "surface-container": "#191919",
+                        "tertiary-dim": "#d4ddef",
+                        "surface": "#0e0e0e",
+                        "on-primary-fixed-variant": "#5a5c5c",
+                        "error-container": "#7f2927",
+                        "surface-bright": "#2c2c2c",
+                        "on-secondary-fixed-variant": "#565c66",
+                        "primary-fixed-dim": "#d4d4d4",
+                        "primary": "#c6c6c7",
+                        "surface-tint": "#c6c6c7",
+                        "on-surface-variant": "#8A8F9A",
+                        "on-tertiary-fixed-variant": "#586170",
+                        "tertiary-fixed": "#e2ebfd",
+                        "on-tertiary-container": "#4e5766",
+                        "on-primary-container": "#d0d0d0",
+                        "on-surface": "#e5e5e5",
+                        "on-primary-fixed": "#3e4040",
+                        "inverse-on-surface": "#555555",
+                        "surface-container-highest": "#262626",
+                        "tertiary-container": "#e2ebfd",
+                        "surface-variant": "#262626",
+                        "secondary-dim": "#999ea9",
+                        "surface-dim": "#0e0e0e",
+                        "surface-container-low": "#131313",
+                        "on-tertiary-fixed": "#3c4553",
+                        "surface-container-high": "#1f1f1f",
+                        "on-error-container": "#ff9993",
+                        "secondary-fixed-dim": "#d0d4e0",
+                        "on-error": "#490106",
+                        "on-secondary": "#1b2029",
+                        "outline-variant": "#626B7A",
+                        "surface-container-lowest": "#000000",
+                        "secondary-fixed": "#dee2ef",
+                        "error": "#ee7d77",
+                        "primary-fixed": "#e2e2e2",
+                        "inverse-primary": "#5e5f60",
+                        "primary-container": "#454747",
+                        "error-dim": "#bb5551",
+                        "on-secondary-container": "#babfcb",
+                        "outline": "#757575",
+                        "tertiary-fixed-dim": "#d4ddef"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["DM Sans", "Manrope", "sans-serif"],
+                        "body": ["DM Sans", "Manrope", "sans-serif"],
+                        "label": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+            color: #e5e5e5;
+            font-family: 'DM Sans', sans-serif;
+        }
+        .cinematic-h1 {
+            font-size: clamp(48px, 8vw, 120px);
+            line-height: 1.1;
+            letter-spacing: -0.04em;
+        }
+        .cinematic-h2 {
+            font-size: clamp(36px, 5vw, 72px);
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+        }
+        .grid-scaffold {
+            background-image: 
+                linear-gradient(to right, #626B7A 1px, transparent 1px),
+                linear-gradient(to bottom, #626B7A 1px, transparent 1px);
+            background-size: 100px 100px;
+            opacity: 0.05;
+        }
+        .glass-nav {
+            background: rgba(14, 14, 14, 0.6);
+            backdrop-filter: blur(20px);
+        }
+        .primary-gradient {
+            background: linear-gradient(45deg, #c6c6c7 0%, #454747 100%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .hover-arrow:hover .arrow-icon {
+            transform: translateX(4px);
+        }
+        .transition-all {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+<body class="bg-background selection:bg-primary selection:text-background">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 bg-black/60 backdrop-blur-xl border-b border-zinc-800/50 flex justify-between items-center px-8 py-6 w-full">
+<div class="text-2xl font-black tracking-tighter text-zinc-100 font-['DM_Sans']">AXIS STUDIO</div>
+<div class="hidden md:flex items-center gap-10 font-['DM_Sans'] tracking-tight">
+<a class="text-zinc-500 hover:text-zinc-300 transition-colors" href="#services">Services</a>
+<a class="text-zinc-500 hover:text-zinc-300 transition-colors" href="#workflow">Workflow</a>
+<a class="text-zinc-500 hover:text-zinc-300 transition-colors" href="#process">Process</a>
+<a class="text-zinc-500 hover:text-zinc-300 transition-colors" href="#contact">Contact</a>
+</div>
+<button class="primary-gradient text-background px-8 py-3 rounded-full font-bold tracking-tight scale-95 active:scale-90 transition-transform">
+            Inquire
+        </button>
+</nav>
+<!-- Structural Grid Overlay -->
+<div class="fixed inset-0 grid-scaffold pointer-events-none z-0"></div>
+<main class="relative z-10">
+<!-- Hero Section -->
+<section class="min-h-screen flex flex-col justify-center px-8 md:px-24 pt-32 pb-16">
+<div class="max-w-7xl">
+<span class="text-[12px] tracking-[0.2em] uppercase text-primary mb-8 block font-label font-bold">Automated Intelligence</span>
+<h1 class="cinematic-h1 font-bold text-on-surface mb-12">
+                    The definitive web &amp; <br/>automation partner for <br/>modern businesses.
+                </h1>
+<p class="text-on-surface-variant text-2xl md:text-3xl max-w-3xl mb-16 leading-relaxed">
+                    We build self-selling systems that automate lead capture, nurturing, and booking while you sleep.
+                </p>
+<div class="flex flex-col sm:flex-row gap-8 items-start sm:items-center">
+<button class="primary-gradient text-black px-10 py-5 rounded-full text-lg font-bold flex items-center group transition-all">
+                        Book a Growth Call
+                        <svg class="ml-3 w-6 h-6 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewbox="0 0 24 24">
+<path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors text-lg flex items-center group">
+                        Explore Our Work
+                        <span class="material-symbols-outlined ml-2 opacity-0 group-hover:opacity-100 transition-all">arrow_forward</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Tech Marquee -->
+<section class="py-24 border-y border-outline-variant/20 overflow-hidden">
+<div class="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-40 grayscale hover:grayscale-0 transition-all px-8">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">database</span>
+<span class="font-bold text-xl tracking-tight">Airtable</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">calendar_today</span>
+<span class="font-bold text-xl tracking-tight">Cal.com</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">memory</span>
+<span class="font-bold text-xl tracking-tight">OpenAI</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">hub</span>
+<span class="font-bold text-xl tracking-tight">Make.com</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-3xl">psychology</span>
+<span class="font-bold text-xl tracking-tight">Anthropic</span>
+</div>
+</div>
+</section>
+<!-- Service Tiers -->
+<section class="py-32 px-8 md:px-24" id="services">
+<div class="mb-24">
+<h2 class="cinematic-h2 font-bold text-on-surface mb-8">Service Tiers</h2>
+<p class="text-on-surface-variant text-xl">Scalable solutions for every stage of growth.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-0 border border-outline-variant/30">
+<!-- Starter Card -->
+<div class="p-12 border-r border-outline-variant/30 hover:bg-surface-container-low transition-colors group">
+<span class="text-primary font-label text-xs tracking-widest mb-4 block">01</span>
+<h3 class="text-4xl font-bold mb-6">Starter</h3>
+<p class="text-on-surface-variant mb-12 min-h-[80px]">A clean professional website or landing page. Contact form that captures leads automatically. Instant AI-written reply sent to every enquiry.</p>
+<ul class="space-y-6 mb-16"><li class="flex items-start text-on-surface/80"><span class="material-symbols-outlined mr-3 text-primary text-sm mt-1">check_circle</span>Professional Website</li><li class="flex items-start text-on-surface/80"><span class="material-symbols-outlined mr-3 text-primary text-sm mt-1">check_circle</span>Automatic Lead Capture</li><li class="flex items-start text-on-surface/80"><span class="material-symbols-outlined mr-3 text-primary text-sm mt-1">check_circle</span>Instant AI-Reply</li></ul>
+<button class="w-full py-4 border border-outline-variant/50 rounded-full hover:border-primary transition-all group-hover:bg-primary group-hover:text-black font-bold">Get Started</button>
+</div>
+<!-- Growth Card -->
+<div class="p-12 border-r border-outline-variant/30 bg-surface-container-low relative overflow-hidden">
+<div class="absolute top-0 right-0 primary-gradient text-black px-4 py-1 text-[10px] font-bold uppercase tracking-widest">Most Popular</div>
+<span class="text-primary font-label text-xs tracking-widest mb-4 block">02</span>
+<h3 class="text-4xl font-bold mb-6">Growth</h3>
+<p class="text-on-surface-variant mb-12 min-h-[80px]">Everything in Starter plus a full follow-up system. Three automated emails sent over 10 days if the lead goes quiet. Booking system so leads can schedule a call directly. All leads tracked in one place.</p>
+<ul class="space-y-6 mb-16"><li class="flex items-start text-on-surface/80"><span class="material-symbols-outlined mr-3 text-primary text-sm mt-1">check_circle</span>Full Follow-up System</li><li class="flex items-start text-on-surface/80"><span class="material-symbols-outlined mr-3 text-primary text-sm mt-1">check_circle</span>10-Day Automated Sequence</li><li class="flex items-start text-on-surface/80"><span class="material-symbols-outlined mr-3 text-primary text-sm mt-1">check_circle</span>Integrated Booking System</li></ul>
+<button class="w-full py-4 primary-gradient text-black rounded-full font-bold">Select Growth</button>
+</div>
+<!-- Pro Card -->
+<div class="p-12 hover:bg-surface-container-low transition-colors group">
+<span class="text-primary font-label text-xs tracking-widest mb-4 block">03</span>
+<h3 class="text-4xl font-bold mb-6">Pro</h3>
+<p class="text-on-surface-variant mb-12 min-h-[80px]">Everything in Growth plus full CRM management, post-call emails triggered in one click, Google Calendar integration, and monthly reporting. The complete done-for-you system.</p>
+<ul class="space-y-6 mb-16"><li class="flex items-start text-on-surface/80"><span class="material-symbols-outlined mr-3 text-primary text-sm mt-1">check_circle</span>Full CRM Management</li><li class="flex items-start text-on-surface/80"><span class="material-symbols-outlined mr-3 text-primary text-sm mt-1">check_circle</span>One-Click Post-Call Emails</li><li class="flex items-start text-on-surface/80"><span class="material-symbols-outlined mr-3 text-primary text-sm mt-1">check_circle</span>Calendar &amp; Reporting</li></ul>
+<button class="w-full py-4 border border-outline-variant/50 rounded-full hover:border-primary transition-all group-hover:bg-primary group-hover:text-black font-bold">Contact for Pro</button>
+</div>
+</div>
+</section>
+<!-- Workflow Section (Updated to match IMAGE_2) -->
+<section class="py-48 px-8 md:px-24 bg-black" id="workflow">
+<div class="max-w-7xl mx-auto">
+<div class="mb-24">
+<span class="text-primary font-label text-xs tracking-[0.2em] uppercase mb-4 block">How we work</span>
+<h2 class="cinematic-h2 font-bold text-on-surface mb-8">From first call to launch.</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Step 1 -->
+<div class="p-10 border border-outline-variant/30 hover:border-primary/50 transition-all bg-surface-container-lowest flex flex-col gap-6">
+<div class="w-8 h-8 rounded-full border border-outline-variant/50 flex items-center justify-center text-sm font-bold text-primary">1</div>
+<div><h4 class="text-xl font-bold mb-4">Instant Engagement</h4><p class="text-on-surface-variant text-sm leading-relaxed">The moment a prospect fills out your form, our system takes over. A personalized, high-context reply is delivered in seconds, ensuring you're first to the conversation.</p></div>
+</div>
+<!-- Step 2 -->
+<div class="p-10 border border-outline-variant/30 hover:border-primary/50 transition-all bg-surface-container-lowest flex flex-col gap-6">
+<div class="w-8 h-8 rounded-full border border-outline-variant/50 flex items-center justify-center text-sm font-bold text-primary">2</div>
+<div><h4 class="text-xl font-bold mb-4">Autonomous Management</h4><p class="text-on-surface-variant text-sm leading-relaxed">Lead details are instantly captured and structured in your database. No manual data entry, no missed opportunities—just a clean, organized sales pipeline.</p></div>
+</div>
+<!-- Step 3 -->
+<div class="p-10 border border-outline-variant/30 hover:border-primary/50 transition-all bg-surface-container-lowest flex flex-col gap-6">
+<div class="w-8 h-8 rounded-full border border-outline-variant/50 flex items-center justify-center text-sm font-bold text-primary">3</div>
+<div><h4 class="text-xl font-bold mb-4">Intelligent Nurturing</h4><p class="text-on-surface-variant text-sm leading-relaxed">If they don't respond immediately, our automated sequences follow up over the coming weeks. We handle the persistence so you can focus on the closing.</p></div>
+</div>
+<!-- Step 4 -->
+<div class="p-10 border border-outline-variant/30 hover:border-primary/50 transition-all bg-surface-container-lowest flex flex-col gap-6">
+<div class="w-8 h-8 rounded-full border border-outline-variant/50 flex items-center justify-center text-sm font-bold text-primary">4</div>
+<div><h4 class="text-xl font-bold mb-4">Frictionless Booking</h4><p class="text-on-surface-variant text-sm leading-relaxed">When they're ready to meet, they book directly from their inbox. The entire journey, from first touch to confirmed meeting, runs itself without you lifting a finger.</p></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Process Section -->
+<section class="py-48 px-8 md:px-24" id="process">
+<div class="flex flex-col md:flex-row gap-24">
+<div class="md:w-1/3">
+<h2 class="cinematic-h2 font-bold mb-12">The <br/>Process</h2>
+<p class="text-on-surface-variant text-xl leading-relaxed">
+                        Precision engineering for digital business. We don't just build sites; we architect revenue engines.
+                    </p>
+</div>
+<div class="md:w-2/3 flex flex-col gap-24">
+<div class="flex gap-12 group">
+<span class="text-6xl font-bold text-outline-variant/30 group-hover:text-primary transition-all">01</span>
+<div>
+<h3 class="text-4xl font-bold mb-6">Audit</h3>
+<p class="text-on-surface-variant text-2xl leading-relaxed">We dismantle your current workflow to find bottlenecks, friction points, and automation opportunities.</p>
+</div>
+</div>
+<div class="flex gap-12 group">
+<span class="text-6xl font-bold text-outline-variant/30 group-hover:text-primary transition-all">02</span>
+<div>
+<h3 class="text-4xl font-bold mb-6">Architecture</h3>
+<p class="text-on-surface-variant text-2xl leading-relaxed">Designing the technical blueprint of your AI-driven ecosystem, ensuring seamless data flow.</p>
+</div>
+</div>
+<div class="flex gap-12 group">
+<span class="text-6xl font-bold text-outline-variant/30 group-hover:text-primary transition-all">03</span>
+<div>
+<h3 class="text-4xl font-bold mb-6">Build</h3>
+<p class="text-on-surface-variant text-2xl leading-relaxed">Rapid deployment of high-performance interfaces and backend automation protocols.</p>
+</div>
+</div>
+<div class="flex gap-12 group">
+<span class="text-6xl font-bold text-outline-variant/30 group-hover:text-primary transition-all">04</span>
+<div>
+<h3 class="text-4xl font-bold mb-6">Scale</h3>
+<p class="text-on-surface-variant text-2xl leading-relaxed">Continuous optimization of your system as lead volume increases and new AI models emerge.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-64 px-8 md:px-24 text-center" id="contact">
+<div class="max-w-5xl mx-auto">
+<h2 class="cinematic-h1 font-bold mb-16">Ready to automate?</h2>
+<div class="inline-block p-[1px] rounded-full primary-gradient">
+<button class="bg-black hover:bg-transparent text-white px-12 py-6 rounded-full text-2xl font-bold transition-all group flex items-center mx-auto">
+                        Book Your Free Strategy Call
+                        <span class="material-symbols-outlined ml-4 group-hover:translate-x-2 transition-transform">north_east</span>
+</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-black w-full border-t border-zinc-900">
+<div class="flex flex-col md:flex-row justify-between items-center px-12 py-16 w-full max-w-screen-2xl mx-auto">
+<div class="mb-12 md:mb-0">
+<div class="text-lg font-bold text-zinc-100 mb-4 font-['DM_Sans']">AXIS STUDIO</div>
+<p class="text-zinc-600 font-['DM_Sans'] text-sm tracking-[0.1em] uppercase">© 2026 AXIS STUDIO. ALL RIGHTS RESERVED.</p>
+</div>
+<div class="flex gap-12">
+<div class="flex flex-col gap-4">
+<a class="text-zinc-600 hover:text-zinc-300 transition-colors font-['DM_Sans'] text-sm tracking-[0.1em] uppercase" href="#">Privacy Policy</a>
+<a class="text-zinc-600 hover:text-zinc-300 transition-colors font-['DM_Sans'] text-sm tracking-[0.1em] uppercase" href="#">Terms of Service</a>
+</div>
+<div class="flex flex-col gap-4">
+<a class="text-zinc-600 hover:text-zinc-300 transition-colors font-['DM_Sans'] text-sm tracking-[0.1em] uppercase" href="#">Twitter</a>
+<a class="text-zinc-600 hover:text-zinc-300 transition-colors font-['DM_Sans'] text-sm tracking-[0.1em] uppercase" href="#">LinkedIn</a>
+</div>
+</div>
+</div>
+</footer>
+</body></html>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>Axis Studio — Websites & automation for businesses that live on leads</title>
+<meta name="description" content="Axis Studio builds websites and automated lead systems for small businesses. Instant AI replies, automatic follow-ups, and booking — running on autopilot." />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Inter:wght@100..900&family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "on-background": "#e5e5e5",
+          "secondary": "#999ea9",
+          "background": "#000000",
+          "on-primary": "#3f4041",
+          "surface-container": "#191919",
+          "surface": "#0e0e0e",
+          "surface-bright": "#2c2c2c",
+          "primary": "#c6c6c7",
+          "on-surface-variant": "#8A8F9A",
+          "on-surface": "#e5e5e5",
+          "surface-container-highest": "#262626",
+          "surface-variant": "#262626",
+          "surface-container-low": "#131313",
+          "surface-container-high": "#1f1f1f",
+          "outline-variant": "#626B7A",
+          "surface-container-lowest": "#000000",
+          "error": "#ee7d77",
+          "primary-container": "#454747",
+          "outline": "#757575"
+        },
+        borderRadius: {
+          DEFAULT: "0.125rem",
+          lg: "0.25rem",
+          xl: "0.5rem",
+          full: "9999px"
+        },
+        fontFamily: {
+          headline: ["DM Sans", "Manrope", "sans-serif"],
+          body: ["DM Sans", "Manrope", "sans-serif"],
+          label: ["Inter", "sans-serif"]
+        }
+      }
+    }
+  };
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    background-color: #000000;
+    color: #e5e5e5;
+    font-family: 'DM Sans', sans-serif;
+  }
+  .cinematic-h1 {
+    font-size: clamp(48px, 8vw, 120px);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+  }
+  .cinematic-h2 {
+    font-size: clamp(36px, 5vw, 72px);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+  }
+  .grid-scaffold {
+    background-image:
+      linear-gradient(to right, #626B7A 1px, transparent 1px),
+      linear-gradient(to bottom, #626B7A 1px, transparent 1px);
+    background-size: 100px 100px;
+    opacity: 0.05;
+  }
+  .glass-nav {
+    background: rgba(14, 14, 14, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+  .primary-gradient {
+    background: linear-gradient(45deg, #c6c6c7 0%, #454747 100%);
+  }
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+  }
+  .hover-arrow:hover .arrow-icon { transform: translateX(4px); }
+  .transition-cinematic { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
+
+  /* Hero staggered reveal */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards; }
+  .reveal-1 { animation-delay: 0.05s; }
+  .reveal-2 { animation-delay: 0.18s; }
+  .reveal-3 { animation-delay: 0.32s; }
+  .reveal-4 { animation-delay: 0.48s; }
+
+  /* Marquee */
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+
+  /* Mobile nav */
+  #nav-toggle { display: none; }
+  #nav-toggle:checked ~ #mobile-menu { transform: translateX(0); }
+  #mobile-menu { transform: translateX(100%); transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+
+  /* Ghost border utility */
+  .logo-white { filter: brightness(0) invert(1); }
+  .ghost-border { border: 1px solid rgba(117, 117, 117, 0.3); }
+  .ghost-border-b { border-bottom: 1px solid rgba(117, 117, 117, 0.3); }
+  .ghost-border-t { border-top: 1px solid rgba(117, 117, 117, 0.3); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; animation: none; }
+    .marquee-track { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body class="bg-background selection:bg-primary selection:text-background overflow-x-hidden">
+
+<!-- Structural grid overlay -->
+<div class="fixed inset-0 grid-scaffold pointer-events-none z-0"></div>
+
+<!-- Nav -->
+<nav class="fixed top-0 left-0 w-full z-50 glass-nav ghost-border-b">
+  <div class="relative flex justify-between items-center px-6 md:px-12 py-4">
+    <a href="#top" class="flex items-center" aria-label="Axis Studio — home">
+      <img src="axis logo.png" alt="Axis Studio" class="logo-white h-28 md:h-32 w-auto" />
+    </a>
+    <div class="hidden md:flex items-center gap-10 text-sm tracking-tight absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#services">Services</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#workflow">How it works</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#process">Process</a>
+      <a class="text-on-surface-variant hover:text-on-surface transition-colors" href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="hidden md:inline-flex primary-gradient text-black px-6 py-3 rounded-full font-bold text-sm tracking-tight hover:scale-[0.98] active:scale-95 transition-cinematic">
+      Inquire
+    </a>
+    <!-- Mobile toggle -->
+    <input type="checkbox" id="nav-toggle" aria-label="Toggle menu" />
+    <label for="nav-toggle" class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer" aria-label="Open menu">
+      <span class="material-symbols-outlined text-3xl">menu</span>
+    </label>
+  </div>
+</nav>
+
+<!-- Mobile menu overlay -->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-black md:hidden flex flex-col justify-center items-start px-10 gap-10">
+  <label for="nav-toggle" class="absolute top-5 right-5 w-10 h-10 flex items-center justify-center cursor-pointer" aria-label="Close menu">
+    <span class="material-symbols-outlined text-3xl">close</span>
+  </label>
+  <a href="#services" class="text-5xl font-bold text-on-surface" onclick="document.getElementById('nav-toggle').checked=false">Services</a>
+  <a href="#workflow" class="text-5xl font-bold text-on-surface" onclick="document.getElementById('nav-toggle').checked=false">How it works</a>
+  <a href="#process" class="text-5xl font-bold text-on-surface" onclick="document.getElementById('nav-toggle').checked=false">Process</a>
+  <a href="#contact" class="text-5xl font-bold text-on-surface" onclick="document.getElementById('nav-toggle').checked=false">Contact</a>
+  <a href="#contact" class="primary-gradient text-black px-8 py-4 rounded-full font-bold tracking-tight mt-6" onclick="document.getElementById('nav-toggle').checked=false">Inquire</a>
+</div>
+
+<main id="top" class="relative z-10">
+
+  <!-- Hero -->
+  <section class="min-h-screen flex flex-col justify-center px-6 md:px-24 pt-48 pb-32">
+    <div class="max-w-[1600px]">
+      <span class="reveal reveal-1 text-[12px] tracking-[0.2em] uppercase text-primary mb-8 block font-label font-bold">
+        <span class="inline-block w-8 h-px bg-primary align-middle mr-4"></span>Automated Intelligence
+      </span>
+      <h1 class="reveal reveal-2 cinematic-h1 font-bold text-on-surface mb-10">
+        Your next customer<br />
+        shouldn't have to<br />
+        <span class="italic font-light text-on-surface-variant">wait.</span>
+      </h1>
+      <p class="reveal reveal-3 text-on-surface-variant text-xl md:text-2xl lg:text-3xl max-w-3xl mb-14 leading-relaxed">
+        We build websites and automated systems that reply instantly, follow up for weeks, and book the call — so you never chase another lead.
+      </p>
+      <div class="reveal reveal-4 flex flex-col sm:flex-row gap-6 items-start sm:items-center">
+        <a href="#contact" class="primary-gradient text-black px-10 py-5 rounded-full text-base md:text-lg font-bold flex items-center group transition-cinematic hover:scale-[0.98]">
+          Book a Growth Call
+          <svg class="ml-3 w-5 h-5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path d="M17 8l4 4m0 0l-4 4m4-4H3" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+          </svg>
+        </a>
+        <a href="#workflow" class="hover-arrow text-on-surface hover:text-primary transition-colors text-base md:text-lg flex items-center group">
+          See how it works
+          <span class="arrow-icon material-symbols-outlined ml-2 transition-transform">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem statement -->
+  <section class="py-28 md:py-40 px-6 md:px-24 ghost-border-t">
+    <div class="max-w-6xl">
+      <span class="text-primary font-label text-xs tracking-[0.2em] uppercase mb-10 block font-bold">The problem</span>
+      <p class="cinematic-h2 font-light text-on-surface leading-[1.15]">
+        Most small businesses lose customers<br />
+        <span class="text-on-surface-variant">simply because they're too busy to reply quickly,</span><br />
+        or they forget to follow up.
+        <span class="italic font-normal text-primary"> We fix that.</span>
+      </p>
+    </div>
+  </section>
+
+  <!-- Tech marquee -->
+  <section class="py-24 md:py-28 ghost-border-t ghost-border-b overflow-hidden">
+    <span class="text-on-surface-variant font-label text-[11px] tracking-[0.25em] uppercase block text-center mb-12">Powered by a modern AI-native stack</span>
+    <div class="marquee-track gap-24 opacity-50">
+      <div class="flex items-center gap-24 shrink-0 pr-24">
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">database</span><span class="font-bold text-lg tracking-tight">Airtable</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">calendar_today</span><span class="font-bold text-lg tracking-tight">Cal.com</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">memory</span><span class="font-bold text-lg tracking-tight">OpenAI</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">hub</span><span class="font-bold text-lg tracking-tight">Make.com</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">psychology</span><span class="font-bold text-lg tracking-tight">Anthropic</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">bolt</span><span class="font-bold text-lg tracking-tight">Zapier</span></div>
+      </div>
+      <div class="flex items-center gap-24 shrink-0 pr-24" aria-hidden="true">
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">database</span><span class="font-bold text-lg tracking-tight">Airtable</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">calendar_today</span><span class="font-bold text-lg tracking-tight">Cal.com</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">memory</span><span class="font-bold text-lg tracking-tight">OpenAI</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">hub</span><span class="font-bold text-lg tracking-tight">Make.com</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">psychology</span><span class="font-bold text-lg tracking-tight">Anthropic</span></div>
+        <div class="flex items-center gap-2"><span class="material-symbols-outlined text-2xl">bolt</span><span class="font-bold text-lg tracking-tight">Zapier</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-32 md:py-48 px-6 md:px-24" id="workflow">
+    <div class="max-w-[1600px]">
+      <div class="mb-16 md:mb-24 max-w-3xl">
+        <span class="text-primary font-label text-xs tracking-[0.2em] uppercase mb-6 block font-bold">How it works</span>
+        <h2 class="cinematic-h2 font-bold text-on-surface mb-8">From form fill to<br />confirmed booking.</h2>
+        <p class="text-on-surface-variant text-xl md:text-2xl leading-relaxed">
+          The whole thing runs itself. You never have to manually chase a lead again.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ghost-border">
+        <!-- 1 -->
+        <div class="p-10 md:p-12 ghost-border-b lg:ghost-border-b-0 lg:border-r border-r-0 hover:bg-surface-container-low transition-cinematic group" style="border-right-color: rgba(117,117,117,0.3);">
+          <div class="flex items-center justify-between mb-10">
+            <span class="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors">Step 01</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">mail</span>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-6 leading-tight">They fill<br />the form.</h3>
+          <p class="text-on-surface-variant leading-relaxed">A customer lands on your site, fills in the contact form, and the system takes over the moment they hit send.</p>
+        </div>
+        <!-- 2 -->
+        <div class="p-10 md:p-12 ghost-border-b lg:ghost-border-b-0 lg:border-r border-r-0 hover:bg-surface-container-low transition-cinematic group" style="border-right-color: rgba(117,117,117,0.3);">
+          <div class="flex items-center justify-between mb-10">
+            <span class="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors">Step 02</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">bolt</span>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-6 leading-tight">We reply<br />in seconds.</h3>
+          <p class="text-on-surface-variant leading-relaxed">A personalised, AI-written reply lands in their inbox within seconds. Their details get saved automatically.</p>
+        </div>
+        <!-- 3 -->
+        <div class="p-10 md:p-12 ghost-border-b md:ghost-border-b-0 lg:border-r border-r-0 hover:bg-surface-container-low transition-cinematic group" style="border-right-color: rgba(117,117,117,0.3);">
+          <div class="flex items-center justify-between mb-10">
+            <span class="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors">Step 03</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">autorenew</span>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-6 leading-tight">We follow<br />up for weeks.</h3>
+          <p class="text-on-surface-variant leading-relaxed">If they go quiet, three follow-up emails go out over the next 10 days — without you doing anything.</p>
+        </div>
+        <!-- 4 -->
+        <div class="p-10 md:p-12 hover:bg-surface-container-low transition-cinematic group">
+          <div class="flex items-center justify-between mb-10">
+            <span class="font-label text-xs tracking-[0.2em] uppercase text-on-surface-variant group-hover:text-primary transition-colors">Step 04</span>
+            <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">event_available</span>
+          </div>
+          <h3 class="text-2xl md:text-3xl font-bold mb-6 leading-tight">They book<br />the call.</h3>
+          <p class="text-on-surface-variant leading-relaxed">When they're ready, they book straight from the email. The call lands on your calendar. Done.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Service tiers -->
+  <section class="py-32 md:py-48 px-6 md:px-24 ghost-border-t" id="services">
+    <div class="max-w-[1600px]">
+      <div class="mb-16 md:mb-24 max-w-3xl">
+        <span class="text-primary font-label text-xs tracking-[0.2em] uppercase mb-6 block font-bold">Services</span>
+        <h2 class="cinematic-h2 font-bold text-on-surface mb-8">Three ways to<br />plug in.</h2>
+        <p class="text-on-surface-variant text-xl md:text-2xl leading-relaxed">
+          Every tier is the full system — built, hosted, and managed. Start lean or go all-in.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 ghost-border">
+        <!-- Starter -->
+        <div class="p-10 md:p-12 ghost-border-b md:ghost-border-b-0 md:border-r border-r-0 hover:bg-surface-container-low transition-cinematic group flex flex-col" style="border-right-color: rgba(117,117,117,0.3);">
+          <span class="text-on-surface-variant font-label text-xs tracking-[0.25em] uppercase mb-6 block group-hover:text-primary transition-colors">01 / Starter</span>
+          <h3 class="text-4xl md:text-5xl font-bold mb-8">Starter</h3>
+          <p class="text-on-surface-variant text-lg leading-relaxed mb-12">A clean professional website or landing page, a contact form that captures every lead, and an instant AI-written reply to every enquiry.</p>
+          <ul class="space-y-6 mb-16 flex-1">
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>Professional website or landing page</li>
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>Automatic lead capture form</li>
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>Instant AI-written reply to every enquiry</li>
+          </ul>
+          <a href="#contact" class="block text-center w-full py-4 ghost-border rounded-full hover:border-primary hover:bg-primary hover:text-black font-bold transition-cinematic text-sm tracking-tight">Book a Call</a>
+        </div>
+        <!-- Growth (highlighted) -->
+        <div class="p-10 md:p-12 bg-surface-container-low ghost-border-b md:ghost-border-b-0 md:border-r border-r-0 relative flex flex-col" style="border-right-color: rgba(117,117,117,0.3);">
+          <div class="absolute top-0 right-0 primary-gradient text-black px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.15em]">Most Popular</div>
+          <span class="text-primary font-label text-xs tracking-[0.25em] uppercase mb-6 block">02 / Growth</span>
+          <h3 class="text-4xl md:text-5xl font-bold mb-8">Growth</h3>
+          <p class="text-on-surface-variant text-lg leading-relaxed mb-12">Everything in Starter plus a full follow-up system, direct booking, and a single place to track every lead that comes in.</p>
+          <ul class="space-y-6 mb-16 flex-1">
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>Everything in Starter</li>
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>3 automated follow-ups over 10 days</li>
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>Integrated booking system</li>
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>All leads tracked in one place</li>
+          </ul>
+          <a href="#contact" class="block text-center w-full py-4 primary-gradient text-black rounded-full font-bold text-sm tracking-tight hover:scale-[0.98] transition-cinematic">Select Growth</a>
+        </div>
+        <!-- Pro -->
+        <div class="p-10 md:p-12 hover:bg-surface-container-low transition-cinematic group flex flex-col">
+          <span class="text-on-surface-variant font-label text-xs tracking-[0.25em] uppercase mb-6 block group-hover:text-primary transition-colors">03 / Pro</span>
+          <h3 class="text-4xl md:text-5xl font-bold mb-8">Pro</h3>
+          <p class="text-on-surface-variant text-lg leading-relaxed mb-12">Everything in Growth plus full CRM management, one-click post-call emails, Google Calendar integration, and monthly reporting. The complete done-for-you system.</p>
+          <ul class="space-y-6 mb-16 flex-1">
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>Everything in Growth</li>
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>Full CRM management</li>
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>One-click post-call emails</li>
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>Google Calendar integration</li>
+            <li class="flex items-start text-on-surface/90 text-base"><span class="material-symbols-outlined mr-4 text-primary text-base mt-0.5">check</span>Monthly reporting</li>
+          </ul>
+          <a href="#contact" class="block text-center w-full py-4 ghost-border rounded-full hover:border-primary hover:bg-primary hover:text-black font-bold transition-cinematic text-sm tracking-tight">Contact for Pro</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Who it's for -->
+  <section class="py-32 md:py-48 px-6 md:px-24 ghost-border-t">
+    <div class="max-w-[1600px]">
+      <div class="mb-16 md:mb-24 max-w-4xl">
+        <span class="text-primary font-label text-xs tracking-[0.2em] uppercase mb-6 block font-bold">Who it's for</span>
+        <h2 class="cinematic-h2 font-bold text-on-surface">Built for businesses<br />that live on leads.</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-16 gap-y-16">
+        <div>
+          <span class="material-symbols-outlined text-primary text-3xl mb-4 block">handyman</span>
+          <h4 class="text-2xl md:text-3xl font-bold mb-3">Tradespeople</h4>
+          <p class="text-on-surface-variant text-lg leading-relaxed">On the tools all day and missing calls. Every enquiry gets a reply before you check your phone.</p>
+        </div>
+        <div>
+          <span class="material-symbols-outlined text-primary text-3xl mb-4 block">content_cut</span>
+          <h4 class="text-2xl md:text-3xl font-bold mb-3">Salons & studios</h4>
+          <p class="text-on-surface-variant text-lg leading-relaxed">Booked out and still losing bookings to rivals. Auto-reply converts browsers into confirmed appointments.</p>
+        </div>
+        <div>
+          <span class="material-symbols-outlined text-primary text-3xl mb-4 block">gavel</span>
+          <h4 class="text-2xl md:text-3xl font-bold mb-3">Solicitors & consultants</h4>
+          <p class="text-on-surface-variant text-lg leading-relaxed">New leads need a professional response fast. We deliver it in seconds — every time.</p>
+        </div>
+        <div>
+          <span class="material-symbols-outlined text-primary text-3xl mb-4 block">domain</span>
+          <h4 class="text-2xl md:text-3xl font-bold mb-3">Estate agents</h4>
+          <p class="text-on-surface-variant text-lg leading-relaxed">Viewing enquiries converted before the competition even sees them land in their inbox.</p>
+        </div>
+        <div>
+          <span class="material-symbols-outlined text-primary text-3xl mb-4 block">self_improvement</span>
+          <h4 class="text-2xl md:text-3xl font-bold mb-3">Coaches & trainers</h4>
+          <p class="text-on-surface-variant text-lg leading-relaxed">Serious prospects book a call straight from the email. No back-and-forth, no chasing.</p>
+        </div>
+        <div>
+          <span class="material-symbols-outlined text-primary text-3xl mb-4 block">storefront</span>
+          <h4 class="text-2xl md:text-3xl font-bold mb-3">Anyone with a form</h4>
+          <p class="text-on-surface-variant text-lg leading-relaxed">If your business runs on enquiries and bookings, the system works. Full stop.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Differentiator pullquote -->
+  <section class="py-32 md:py-48 px-6 md:px-24 ghost-border-t">
+    <div class="max-w-6xl">
+      <span class="text-primary font-label text-xs tracking-[0.2em] uppercase mb-12 block font-bold">Why Axis</span>
+      <blockquote class="cinematic-h2 font-light leading-[1.2] text-on-surface">
+        <span class="text-on-surface-variant">Most web designers just build a website</span><br />
+        <span class="text-on-surface-variant">and walk away.</span> We build the<br />
+        <span class="italic font-normal text-primary">whole system</span> behind it.
+      </blockquote>
+      <p class="text-on-surface-variant text-xl md:text-2xl leading-relaxed mt-14 max-w-3xl">
+        The website brings people in. The automation converts them. Our clients get more customers without doing more work.
+      </p>
+    </div>
+  </section>
+
+  <!-- Process -->
+  <section class="py-32 md:py-48 px-6 md:px-24 ghost-border-t" id="process">
+    <div class="flex flex-col md:flex-row gap-16 md:gap-20">
+      <div class="md:w-1/3">
+        <span class="text-primary font-label text-xs tracking-[0.2em] uppercase mb-6 block font-bold">The process</span>
+        <h2 class="cinematic-h2 font-bold mb-8">How we<br />build it.</h2>
+        <p class="text-on-surface-variant text-xl leading-relaxed">
+          We set the whole system up once. New clients get onboarded in minutes. It scales automatically from there.
+        </p>
+      </div>
+      <div class="md:w-2/3 flex flex-col gap-16 md:gap-20">
+        <div class="flex gap-8 md:gap-12 group">
+          <span class="text-5xl md:text-6xl font-bold text-outline-variant/30 group-hover:text-primary transition-cinematic shrink-0">01</span>
+          <div>
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Audit</h3>
+            <p class="text-on-surface-variant text-xl md:text-2xl leading-relaxed">We sit down with you, understand your business, your leads, and where they're leaking out the bottom.</p>
+          </div>
+        </div>
+        <div class="flex gap-8 md:gap-12 group">
+          <span class="text-5xl md:text-6xl font-bold text-outline-variant/30 group-hover:text-primary transition-cinematic shrink-0">02</span>
+          <div>
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Design</h3>
+            <p class="text-on-surface-variant text-xl md:text-2xl leading-relaxed">We design a website and automation flow that matches your brand and actually converts — nothing generic.</p>
+          </div>
+        </div>
+        <div class="flex gap-8 md:gap-12 group">
+          <span class="text-5xl md:text-6xl font-bold text-outline-variant/30 group-hover:text-primary transition-cinematic shrink-0">03</span>
+          <div>
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Build</h3>
+            <p class="text-on-surface-variant text-xl md:text-2xl leading-relaxed">We ship the site, wire up the automation, plug in your calendar, and test every path end-to-end.</p>
+          </div>
+        </div>
+        <div class="flex gap-8 md:gap-12 group">
+          <span class="text-5xl md:text-6xl font-bold text-outline-variant/30 group-hover:text-primary transition-cinematic shrink-0">04</span>
+          <div>
+            <h3 class="text-3xl md:text-4xl font-bold mb-4">Run</h3>
+            <p class="text-on-surface-variant text-xl md:text-2xl leading-relaxed">We manage it from there. You get the leads, the bookings, and the reports. That's it.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="py-32 md:py-64 px-6 md:px-24 text-center ghost-border-t" id="contact">
+    <div class="max-w-5xl mx-auto">
+      <span class="text-primary font-label text-xs tracking-[0.2em] uppercase mb-8 block font-bold">Get in touch</span>
+      <h2 class="cinematic-h1 font-bold mb-12">Ready to<br /><span class="italic font-light text-on-surface-variant">automate?</span></h2>
+      <p class="text-on-surface-variant text-xl md:text-2xl max-w-2xl mx-auto mb-14 leading-relaxed">
+        Book a free 30-minute call. We'll walk you through the system and show you exactly what it would look like for your business.
+      </p>
+      <div class="inline-block p-[1px] rounded-full primary-gradient">
+        <a href="mailto:hello@axis.studio" class="bg-black hover:bg-transparent hover:text-black text-white px-10 md:px-12 py-5 md:py-6 rounded-full text-lg md:text-2xl font-bold transition-cinematic group flex items-center mx-auto">
+          Book Your Free Strategy Call
+          <span class="material-symbols-outlined ml-4 group-hover:translate-x-2 transition-transform">north_east</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Footer -->
+<footer class="bg-black w-full ghost-border-t relative z-10">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center px-6 md:px-12 py-20 md:py-24 w-full max-w-[1600px] mx-auto gap-12">
+    <div>
+      <img src="axis logo.png" alt="Axis Studio" class="logo-white h-40 w-auto mb-6" />
+      <p class="text-on-surface-variant font-label text-xs tracking-[0.15em] uppercase">© 2026 Axis Studio. All rights reserved.</p>
+    </div>
+    <div class="flex gap-12 md:gap-16">
+      <div class="flex flex-col gap-4">
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-xs tracking-[0.15em] uppercase" href="#services">Services</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-xs tracking-[0.15em] uppercase" href="#workflow">How it works</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-xs tracking-[0.15em] uppercase" href="#">Privacy</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-xs tracking-[0.15em] uppercase" href="#">Terms</a>
+      </div>
+      <div class="flex flex-col gap-4">
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-xs tracking-[0.15em] uppercase" href="#">Twitter</a>
+        <a class="text-on-surface-variant hover:text-on-surface transition-colors font-label text-xs tracking-[0.15em] uppercase" href="#">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
