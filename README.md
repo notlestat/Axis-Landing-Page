@@ -1,36 +1,30 @@
-# Axis landing page, historical project
+# Static landing-page prototype
 
-A static landing-page design for the former Axis Studio business. It contains the earlier service packages and brand direction. Corey Kavanagh is the current practice; this repository preserves the older project.
+A static HTML landing-page design with a second design variant. The checked-in copy includes proposed service packages and prices. Those figures do not establish current services or a working sales process.
 
 ## Preview locally
 
-Requires Python 3. From the repository root:
+Download or clone this repository using GitHub's **Code** menu. With Python 3 installed, open a terminal in the checkout and run:
 
 ```sh
-git clone https://github.com/notlestat/Axis-Landing-Page.git
-cd Axis-Landing-Page
 python3 -m http.server 8000 --bind 127.0.0.1
 ```
 
-Open [the main page](http://localhost:8000/index.html). Stop the server with Ctrl+C.
+Open [the main page](http://localhost:8000/index.html) or [the design variant](http://localhost:8000/code.html). Stop the server with Ctrl+C.
 
-There is no package installation or build step. The pages load Tailwind CSS, Google Fonts and icon fonts from external services, so their intended styling needs an internet connection.
+There is no package installation or build step. The pages load Tailwind CSS, Google Fonts, and icon fonts from external services. Their intended styling requires an internet connection.
 
-## Files
+## Project files
 
 | File | Purpose |
-|---|---|
-| [index.html](index.html) | Main landing page |
+| --- | --- |
+| [index.html](index.html) | Main page |
 | [code.html](code.html) | Earlier design variant |
 | [DESIGN.md](DESIGN.md) | Design direction and visual rules |
-| [AXIS_STUDIO.md](AXIS_STUDIO.md) | Historical business proposition and packages |
-| `axis logo.png` | Local logo asset used by the main page |
 | `screen.png` | Saved design image |
 
-## Current state
+## Implementation limits
 
-The checked-in pages are static designs. They contain no lead-submission JavaScript, booking integration or backend connection. The service descriptions and prices are historical copy, not evidence that those workflows are running.
+The pages contain no lead-submission JavaScript, booking integration, or backend connection. There is no automated test suite or deployment configuration.
 
-The separate [Axis-Studio repository](https://github.com/notlestat/Axis-Studio) contains the earlier backend implementation and requires access permission. This page is not automatically connected to it.
-
-There is no automated test suite or deployment configuration in this repository. Preview the page and check its navigation, assets and responsive layout before using it elsewhere.
+Before reusing the design, review the copy and prices, then preview navigation, assets, and responsive layouts.
