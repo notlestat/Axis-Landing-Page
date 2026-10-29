@@ -21,6 +21,8 @@ There is no package installation or build step. The pages load Tailwind CSS, Goo
 | [index.html](index.html) | Main page |
 | [code.html](code.html) | Earlier design variant |
 | [DESIGN.md](DESIGN.md) | Design direction and visual rules |
+| [AXIS_STUDIO.md](AXIS_STUDIO.md) | Business proposition and service packages behind the page copy |
+| `axis logo.png` | Logo image loaded by the main page |
 | `screen.png` | Saved design image |
 
 ## Implementation limits
